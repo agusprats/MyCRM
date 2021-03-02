@@ -1,6 +1,5 @@
 package adaitw.java;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         Empresa e = new Empresa();
-        List<Oportunidad> oportunidades = new ArrayList<>();
+        Oportunidad oportunidad = new Oportunidad();
         List<Prospecto> prospectos = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
@@ -24,10 +23,10 @@ public class Main {
             choice = sc.nextInt();
             switch (choice){
                 case 1:
-                    crearOportunidad((Oportunidad) oportunidades);
+                    crearOportunidad(oportunidad);
                     break;
                 case 2:
-                    agregarProspecto((Prospecto) prospectos);
+                    agregarProspecto(oportunidad);
                     break;
                 case 3:
                     System.exit(0);
@@ -36,13 +35,16 @@ public class Main {
         }while(choice!=0);
     }
 
-    public static void agregarProspecto(Prospecto prospectos) {
+    private static void agregarProspecto(Oportunidad oportunidad) {
 
     }
 
-    public static void crearOportunidad(Oportunidad oportunidades) {
+
+    public static void crearOportunidad(Oportunidad oportunidad) {
+        List<Prospecto> prospectos = oportunidad.getProspecto();
 
     }
+
 
     }
 

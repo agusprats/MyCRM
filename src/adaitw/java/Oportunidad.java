@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Oportunidad {
-    private List<Prospecto> prospectos;
+    private List<Prospecto> prospectos = new ArrayList<>();
     private LocalDate contactDate;
     private Boolean newCall;
     private Potencial potencial;
     private List<Item> items;// productos y servicios ofrecidos
 
     public Oportunidad(){
-        this.prospectos = new ArrayList<>();
+        this.prospectos = prospectos;
         this.contactDate = contactDate;
         this.newCall = newCall;
         this.potencial= potencial;
@@ -23,6 +23,9 @@ public class Oportunidad {
         return prospectos;
     }
 
+    public void agregarProspecto(Prospecto prospecto){
+        prospectos.add(prospecto);
+    }
 
     public LocalDate getContactDate() {
         return contactDate;

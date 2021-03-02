@@ -12,7 +12,7 @@ public class Prospecto {
     private String domicilio;
 
 
-    public Prospecto() {
+    public Prospecto(int id, String nombre, String contacto, String telefono, String email, String domicilio) {
         this.id = id;
         this.nombre = nombre;
         this.contacto = contacto;
