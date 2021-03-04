@@ -7,32 +7,37 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Oportunidad {
-    private List<Prospecto> prospectos = new ArrayList<>();
+    private List<Prospecto> prospectos = new ArrayList<>() ;
     private LocalDate contactDate;
     private Boolean newCall;
     private Potencial potencial;
     private List<Item> items;// productos y servicios ofrecidos
     private Boolean precioReferencia;
 
-    public Oportunidad(List<Prospecto> prospectos){
+    public Oportunidad(List<Prospecto> prospectos, LocalDate contactDate, Boolean newCall, Potencial potencial, Boolean precioReferencia){
         this.prospectos = prospectos;
         this.contactDate = contactDate;
         this.newCall = newCall;
-        this.potencial= potencial;
         this.precioReferencia = precioReferencia;
     }
 
     public Oportunidad() {
-
     }
 
-    public  List<Prospecto> getProspectos() {
+    public  List<Prospecto> getProspecto() {
         return prospectos;
     }
 
+    public void agregarProspecto(Prospecto prospecto) {
+        prospectos.add(prospecto);
+    }
 
     public void eliminarProspecto(Prospecto prospecto){
         prospectos.remove(prospecto);
+    }
+
+    public void reemplazarProspecto(Prospecto prospecto){
+        this.prospectos = prospectos;
     }
 
     public LocalDate getContactDate() {
@@ -89,11 +94,10 @@ public class Oportunidad {
     }
 
     public String OportunitySheet() {
-        return " " + getProspectos() + " - Contactar? : " + getnewCall() + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
+        return " " + getProspecto() + " - Contactar? : " + getnewCall() + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
     }
 
-    public void agregarProspecto(Prospecto unProspecto) {
-    }
+
 }
 
 

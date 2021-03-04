@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Empresa e = new Empresa();
 
-        List<Oportunidad> oportunidades = new ArrayList<>();
+       // List<Oportunidad> oportunidades = new ArrayList<>();
         List<Prospecto> prospectos = new ArrayList<>();
         Oportunidad oportunidad = new Oportunidad();
 
@@ -17,9 +17,9 @@ public class Main {
         int choice = 0;
         String usuario = "";
         do{
-            System.out.println("\n ***MENU PRINCIPAL*** \n");
+            System.out.println("\n ***  MENU PRINCIPAL  *** \n");
             System.out.println("1.Crear nueva Oportunidad");
-            System.out.println("2.Crear nuevo Prospecto");
+            System.out.println("2.Crear Prospecto");
             System.out.println("3.Ver Ficha");
             System.out.println("4.Ver Prospectos");
             System.out.println("0. Salir");
@@ -27,7 +27,7 @@ public class Main {
             choice = sc.nextInt();
             switch (choice){
                 case 1:
-                    crearOportunidad(oportunidad);
+                    crearOportunidad();
                     break;
                 case 2:
                     agregarProspecto(oportunidad);
@@ -36,9 +36,8 @@ public class Main {
                     oportunidad.OportunitySheet();
                     break;
                 case 4:
-                    oportunidad.getProspectos();
-                    System.out.println(prospectos.size());
-                    System.out.println(prospectos.toString());
+                    System.out.println(oportunidad.getProspecto());
+
                     break;
                 case 5:
                     System.exit(0);
@@ -48,32 +47,34 @@ public class Main {
 
     }
 
-    public static void crearOportunidad(Oportunidad oportunidad) {
-        List<Prospecto> prospectos = oportunidad.getProspectos();
-
-
-    }
-
     public static void agregarProspecto(Oportunidad oportunidad) {
-        List<Prospecto> prospectos = new ArrayList<>();
-        //List<Oportunidad> oportunidades = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        Prospecto UnProspecto = new Prospecto();
+        Prospecto unProspecto = new Prospecto();
         System.out.println("Ingrese ID: ");
         int id = scanner.nextInt();
-        UnProspecto.setId(id);
+        unProspecto.setId(id);
         System.out.println("Empresa (Solo caracteres alfabéticos): ");
         String empresa = scanner.next();
-        UnProspecto.setEmpresa(empresa);
+        unProspecto.setEmpresa(empresa);
         System.out.println("Ingrese Contacto: ");
         String contacto = scanner.next();
-        UnProspecto.setContacto(contacto);
+        unProspecto.setContacto(contacto);
         System.out.println("Ingrese email: ");
         String email = scanner.next();
-        UnProspecto.setEmail(email);
-        oportunidad.agregarProspecto(UnProspecto);
-        prospectos.add(UnProspecto);
+        unProspecto.setEmail(email);
+        oportunidad.agregarProspecto(unProspecto);
+
     }
+    public static void crearOportunidad() {
+        Oportunidad oportunidad = new Oportunidad();
+        List<Prospecto> prospectos = oportunidad.getProspecto();
+        Prospecto unProspecto = prospectos.get(0);
+        Prospecto p = (Prospecto) unProspecto;
+
+
+    }
+
+
 
 }
 

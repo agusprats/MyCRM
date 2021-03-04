@@ -89,4 +89,21 @@ public class Prospecto {
         data.add(this.domicilio);
         return data;
     }
+
+    public void remove(Prospecto prospecto) {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Prospecto{" +
+                "id=" + id +
+                ", empresa='" + empresa + '\'' +
+                ", contacto='" + contacto + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", domicilio='" + domicilio + '\'' +
+                '}';
+    }
 }
