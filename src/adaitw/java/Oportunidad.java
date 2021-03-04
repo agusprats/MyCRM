@@ -14,7 +14,7 @@ public class Oportunidad {
     private List<Item> items;// productos y servicios ofrecidos
     private Boolean precioReferencia;
 
-    public Oportunidad(){
+    public Oportunidad(List<Prospecto> prospectos){
         this.prospectos = prospectos;
         this.contactDate = contactDate;
         this.newCall = newCall;
@@ -22,13 +22,14 @@ public class Oportunidad {
         this.precioReferencia = precioReferencia;
     }
 
+    public Oportunidad() {
+
+    }
+
     public  List<Prospecto> getProspectos() {
         return prospectos;
     }
 
-    public void agregarProspecto(Prospecto prospecto){
-        prospectos.add(prospecto);
-    }
 
     public void eliminarProspecto(Prospecto prospecto){
         prospectos.remove(prospecto);
@@ -91,6 +92,8 @@ public class Oportunidad {
         return " " + getProspectos() + " - Contactar? : " + getnewCall() + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
     }
 
+    public void agregarProspecto(Prospecto unProspecto) {
+    }
 }
 
 

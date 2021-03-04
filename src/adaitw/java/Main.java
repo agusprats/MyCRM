@@ -8,11 +8,11 @@ public class Main {
 
     public static void main(String[] args) {
         Empresa e = new Empresa();
+
         List<Oportunidad> oportunidades = new ArrayList<>();
         List<Prospecto> prospectos = new ArrayList<>();
-
-
         Oportunidad oportunidad = new Oportunidad();
+
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         String usuario = "";
@@ -37,21 +37,26 @@ public class Main {
                     break;
                 case 4:
                     oportunidad.getProspectos();
+                    System.out.println(prospectos.size());
+                    System.out.println(prospectos.toString());
                     break;
                 case 5:
                     System.exit(0);
 
             }
         }while(choice!=0);
-    }
 
+    }
 
     public static void crearOportunidad(Oportunidad oportunidad) {
         List<Prospecto> prospectos = oportunidad.getProspectos();
 
+
     }
 
-    public static void agregarProspecto(Oportunidad oportunidades) {
+    public static void agregarProspecto(Oportunidad oportunidad) {
+        List<Prospecto> prospectos = new ArrayList<>();
+        //List<Oportunidad> oportunidades = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         Prospecto UnProspecto = new Prospecto();
         System.out.println("Ingrese ID: ");
@@ -66,7 +71,8 @@ public class Main {
         System.out.println("Ingrese email: ");
         String email = scanner.next();
         UnProspecto.setEmail(email);
-        oportunidades.agregarProspecto(UnProspecto);
+        oportunidad.agregarProspecto(UnProspecto);
+        prospectos.add(UnProspecto);
     }
 
 }
