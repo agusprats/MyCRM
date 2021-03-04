@@ -8,16 +8,20 @@ public class Main {
 
     public static void main(String[] args) {
         Empresa e = new Empresa();
-        Oportunidad oportunidad = new Oportunidad();
+        List<Oportunidad> oportunidades = new ArrayList<>();
         List<Prospecto> prospectos = new ArrayList<>();
 
+
+        Oportunidad oportunidad = new Oportunidad();
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         String usuario = "";
         do{
-            System.out.println("\n Menú: \n");
+            System.out.println("\n ***MENU PRINCIPAL*** \n");
             System.out.println("1.Crear nueva Oportunidad");
             System.out.println("2.Crear nuevo Prospecto");
+            System.out.println("3.Ver Ficha");
+            System.out.println("4.Ver Prospectos");
             System.out.println("0. Salir");
             System.out.print("Ingrese la opción deseada: ");
             choice = sc.nextInt();
@@ -29,24 +33,48 @@ public class Main {
                     agregarProspecto(oportunidad);
                     break;
                 case 3:
+                    oportunidad.OportunitySheet();
+                    break;
+                case 4:
+                    oportunidad.getProspectos();
+                    break;
+                case 5:
                     System.exit(0);
 
             }
         }while(choice!=0);
     }
 
-    private static void agregarProspecto(Oportunidad oportunidad) {
-
-    }
-
 
     public static void crearOportunidad(Oportunidad oportunidad) {
-        List<Prospecto> prospectos = oportunidad.getProspecto();
+        List<Prospecto> prospectos = oportunidad.getProspectos();
 
     }
 
-
+    public static void agregarProspecto(Oportunidad oportunidades) {
+        Scanner scanner = new Scanner(System.in);
+        Prospecto UnProspecto = new Prospecto();
+        System.out.println("Ingrese ID: ");
+        int id = scanner.nextInt();
+        UnProspecto.setId(id);
+        System.out.println("Empresa (Solo caracteres alfabéticos): ");
+        String empresa = scanner.next();
+        UnProspecto.setEmpresa(empresa);
+        System.out.println("Ingrese Contacto: ");
+        String contacto = scanner.next();
+        UnProspecto.setContacto(contacto);
+        System.out.println("Ingrese email: ");
+        String email = scanner.next();
+        UnProspecto.setEmail(email);
+        oportunidades.agregarProspecto(UnProspecto);
     }
+
+}
+
+
+
+
+
 
 
 /*CRM para la gestión de ventas en una empresa
@@ -59,3 +87,19 @@ y en ese caso, indicar monto.
 Notas: El sistema va a tener muchos vendedores.
 Cada vendedor debería tener muchas oportunidades de negocio.
 * */
+
+
+
+
+
+
+    /*private static void agregarProspecto(Oportunidad oportunidades) {
+        Scanner sc = new Scanner(System.in);
+        Prospecto unProspecto = new Prospecto( "RENFE", "Julio", "Jefe", "000111", "julio@mail.com", "Málaga");
+        System.out.print("Indique id: ");
+        int id = sc.nextInt();
+        unProspecto.setId(id);
+        oportunidades.agregarProspecto(unProspecto);
+        unProspecto.prospectoToString();
+
+    }*/

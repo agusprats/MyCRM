@@ -5,24 +5,30 @@ import java.util.List;
 
 public class Prospecto {
     protected int id;
-    private String nombre;
+    private String empresa;
     private String contacto;
+    private String cargo;
     private String telefono;
     private String email;
     private String domicilio;
 
 
-    public Prospecto(int id, String nombre, String contacto, String telefono, String email, String domicilio) {
+    public Prospecto( String empresa, String contacto, String cargo,  String telefono, String email, String domicilio) {
         this.id = id;
-        this.nombre = nombre;
+        this.empresa = empresa;
         this.contacto = contacto;
+        this.cargo = cargo;
         this.telefono = telefono;
         this.email = email;
         this.domicilio = domicilio;
     }
 
-    public String getNombre() {
-        return this.nombre;
+    public Prospecto() {
+
+    }
+
+    public String getEmpresa() {
+        return this.empresa;
     }
 
     public String getContacto() {
@@ -41,12 +47,16 @@ public class Prospecto {
     }
 
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 
     public void setContacto(String contacto) {
         this.contacto = contacto;
+    }
+
+    public void reemplazarContacto(String contacto){
+       this.contacto = contacto;
     }
 
     public void setTelefono(String telefono) {
@@ -71,8 +81,9 @@ public class Prospecto {
 
     public List<String> prospectoToString() {
         List<String> data = new ArrayList();
-        data.add(this.nombre);
+        data.add(this.empresa);
         data.add(this.contacto);
+        data.add(this.cargo);
         data.add(this.telefono);
         data.add(this.email);
         data.add(this.domicilio);
