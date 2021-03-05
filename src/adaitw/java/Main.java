@@ -8,39 +8,47 @@ public class Main {
 
     public static void main(String[] args) {
         Empresa e = new Empresa();
-        Vendedor v = new Vendedor();
-
-       // List<Oportunidad> oportunidades = new ArrayList<>();
+        List<Vendedor> vendedores = new ArrayList<>();
+        List<Oportunidad> oportunidades = new ArrayList<>();
         List<Prospecto> prospectos = new ArrayList<>();
         Oportunidad oportunidad = new Oportunidad();
+
 
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         String usuario = "";
         do{
             System.out.println("\n ***  MENU PRINCIPAL  *** \n");
-            System.out.println("1.Crear nueva Oportunidad");
-            System.out.println("2.Crear Prospecto");
-            System.out.println("3.Ver Ficha");
-            System.out.println("4.Ver Prospectos");
+            System.out.println("1.Cargar Nuevo Vendedor");
+            System.out.println("2.Cargar Nueva Oportunidad");
+            System.out.println("3.Cargar Nuevo Prospecto");
+            System.out.println("4.Ver Ficha");
+            System.out.println("5.Ver Prospectos");
+            System.out.println("6.Ver Vendedores");
             System.out.println("0. Salir");
             System.out.print("Ingrese la opción deseada: ");
             choice = sc.nextInt();
             switch (choice){
                 case 1:
-                    crearOportunidad();
+                    cargarVendedor(e);
                     break;
                 case 2:
-                    agregarProspecto(oportunidad);
+                    crearOportunidad();
                     break;
                 case 3:
-                    oportunidad.OportunitySheet();
+                    agregarProspecto(oportunidad);
                     break;
                 case 4:
-                    System.out.println(oportunidad.getProspecto());
-
+                    oportunidad.OportunitySheet();
                     break;
                 case 5:
+                    System.out.println(oportunidad.getProspecto());
+                    System.out.println(prospectos.size());
+                    break;
+                case 6:
+                    System.out.println(e.getVendedores());
+                    break;
+                case 7:
                     System.exit(0);
 
             }
@@ -48,8 +56,10 @@ public class Main {
 
     }
 
+
     public static void agregarProspecto(Oportunidad oportunidad) {
         Scanner scanner = new Scanner(System.in);
+        List<Prospecto> prospectos = new ArrayList<>();
         Prospecto unProspecto = new Prospecto();
         System.out.println("Ingrese ID: ");
         int id = scanner.nextInt();
@@ -64,7 +74,7 @@ public class Main {
         String email = scanner.next();
         unProspecto.setEmail(email);
         oportunidad.agregarProspecto(unProspecto);
-
+        prospectos.add(unProspecto);
     }
     public static void crearOportunidad() {
         Oportunidad oportunidad = new Oportunidad();
@@ -72,6 +82,16 @@ public class Main {
         Prospecto unProspecto = prospectos.get(0);
         Prospecto p = (Prospecto) unProspecto;
 
+    }
+
+    public static void cargarVendedor(Empresa e){
+        Scanner scanner = new Scanner(System.in);
+        List<Vendedor> vendedores = new ArrayList<>();
+        Vendedor v = new Vendedor();
+        System.out.println("Ingrese CODIGO vendedor: ");
+        String codigo = scanner.next();
+        v.setCodigo(codigo);
+        e.cargarVendedor(v);
 
     }
 
@@ -87,15 +107,16 @@ public class Main {
 
 /*CRM para la gestión de ventas en una empresa
 Se requiere un sistema que permita registrar una oportunidad de negocio.
+
 En cada oportunidad se debe anotar el nombre de la empresa, el nombre del contacto, su cargo,
 el producto o servicio ofrecido y si acepta una llamada de seguimiento.
-Además, registrar fecha de contacto inicial
-y si se le brindó un precio de referencia
-y en ese caso, indicar monto.
+Además, registrar fecha de contacto inicial y si se le brindó un precio de referencia y en ese caso, indicar monto.
+
 Notas: El sistema va a tener muchos vendedores.
-Cada vendedor debería tener muchas oportunidades de negocio.
-Las oportunidades pertenecen al vendedor.
+
+Cada vendedor debería tener muchas oportunidades de negocio. Las oportunidades pertenecen al vendedor.
 Si un vendedor deja la empresa, las oportunidades se asignan a otro vendedor.
+
 Un vendedor tiene muchos clientes y muchas oportunidades.
 Pueden existir más de una oportunidad en el mismo cliente.
 Por ej., al gte. de sistemas de EmpresaX le interesó un producto y al gte. de seguridad de la misma empresa le interesó un producto o servicio distinto.
