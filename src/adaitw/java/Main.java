@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         Empresa e = new Empresa();
+        Vendedor v = new Vendedor();
 
        // List<Oportunidad> oportunidades = new ArrayList<>();
         List<Prospecto> prospectos = new ArrayList<>();
@@ -93,6 +94,13 @@ y si se le brindó un precio de referencia
 y en ese caso, indicar monto.
 Notas: El sistema va a tener muchos vendedores.
 Cada vendedor debería tener muchas oportunidades de negocio.
+Las oportunidades pertenecen al vendedor.
+Si un vendedor deja la empresa, las oportunidades se asignan a otro vendedor.
+Un vendedor tiene muchos clientes y muchas oportunidades.
+Pueden existir más de una oportunidad en el mismo cliente.
+Por ej., al gte. de sistemas de EmpresaX le interesó un producto y al gte. de seguridad de la misma empresa le interesó un producto o servicio distinto.
+Pueden reutilizar el sistema de presupuestos para las listas de productos y servicios.
+Sales funnel / embudo de ventas:
 * */
 
 

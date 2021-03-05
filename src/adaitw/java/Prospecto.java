@@ -100,10 +100,10 @@ public class Prospecto {
                 "id=" + id +
                 ", empresa='" + empresa + '\'' +
                 ", contacto='" + contacto + '\'' +
-                ", cargo='" + cargo + '\'' +
-                ", telefono='" + telefono + '\'' +
+               // ", cargo='" + cargo + '\'' +
+               // ", telefono='" + telefono + '\'' +
                 ", email='" + email + '\'' +
-                ", domicilio='" + domicilio + '\'' +
+               // ", domicilio='" + domicilio + '\'' +
                 '}';
     }
 }
