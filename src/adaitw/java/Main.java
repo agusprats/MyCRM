@@ -37,10 +37,10 @@ public class Main {
                     e.cargarVendedor();
                     break;
                 case 2:
-                    v.crearOportunidad();
+                    v.crearProspecto();
                     break;
                 case 3:
-                    v.crearCliente();
+                    v.crearOportunidad();
                     break;
                 case 4:
                     oportunidad.OportunitySheet();
@@ -53,7 +53,6 @@ public class Main {
                     break;
                 case 7:
                     System.out.println(v.getListaClientes());
-
                     break;
                 case 8:
                     System.out.println(v.getOportunidades());

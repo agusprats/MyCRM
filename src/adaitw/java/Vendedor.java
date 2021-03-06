@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class Vendedor {
     private String codigo;
     List <Cliente> listaClientes;
-    List<Oportunidad> oportunidades;
+    List<Oportunidad> listaOportunidades;
 
     public Vendedor() {
         this.codigo = codigo;
         this.listaClientes = new ArrayList<>();
-        this.oportunidades = new ArrayList<>();
+        this.listaOportunidades = new ArrayList<>();
     }
 
     public String getCodigo() {
@@ -24,9 +24,22 @@ public class Vendedor {
         this.codigo = codigo;
     }
 
-    public void crearCliente(){
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public List<Oportunidad> getOportunidades() {
+        return listaOportunidades;
+    }
+
+    public void agregarOportunidad(Oportunidad oportunidad) {
+        this.listaOportunidades.add(oportunidad);
+    }
+
+    public void crearProspecto(){
         Scanner scanner = new Scanner(System.in);
         Cliente unCliente = new Cliente();
+        Oportunidad op = new Oportunidad();
         System.out.println("Codigo: ");
         int codigo = scanner.nextInt();
         unCliente.setCodigo(codigo);
@@ -39,20 +52,16 @@ public class Vendedor {
         System.out.println("Cargo: ");
         String cargo = scanner.next();
         unCliente.setCargo(cargo);
+        System.out.println("Ingrese Numero Oportunidad (Solo números):  ");
+        int numeroOp = scanner.nextInt();
+        op.setNumeroOp(numeroOp);
+        System.out.println("Contactar nuevamente? (true/false) ");
+        Boolean newCall = scanner.hasNext();
+        op.setNewCall(newCall);
         listaClientes.add(unCliente);
+        listaOportunidades.add(op);
+        System.out.println(getListaClientes()+""+ getOportunidades());
 }
-
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
-    }
-
-    public List<Oportunidad> getOportunidades() {
-        return oportunidades;
-    }
-
-    public void agregarOportunidad(Oportunidad oportunidad) {
-        this.oportunidades.add(oportunidad);
-    }
 
 
     public void crearOportunidad() {
@@ -64,11 +73,12 @@ public class Vendedor {
         System.out.println("Contactar nuevamente? (true/false) ");
         Boolean newCall = scanner.hasNext();
         op.setNewCall(newCall);
+        /*
         System.out.println("Fecha de contacto ");
         LocalDate contactDate = LocalDate.parse(scanner.next());
-        op.setContactDate(contactDate);
+        op.setContactDate(contactDate);*/
 
-        oportunidades.add(op);
+        listaOportunidades.add(op);
 
         //System.out.println(oportunidades);
 

@@ -5,7 +5,7 @@ import java.time.Period;
 import java.util.List;
 import java.util.Scanner;
 
-public class Oportunidad  {
+public class Oportunidad extends Cliente {
     private int numeroOp;
     private LocalDate contactDate;
     private Boolean newCall;
@@ -14,11 +14,11 @@ public class Oportunidad  {
     private Boolean precioReferencia;
 
     public Oportunidad(){
-
         this.numeroOp= numeroOp;
         this.contactDate = contactDate;
         this.newCall = newCall;
         this.precioReferencia = precioReferencia;
+        this.potencial= potencial;
     }
 
 
@@ -29,6 +29,7 @@ public class Oportunidad  {
     public void setNumeroOp(int numeroOp) {
         this.numeroOp = numeroOp;
     }
+
 
     public LocalDate getContactDate() {
         return contactDate;
