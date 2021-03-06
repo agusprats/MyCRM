@@ -1,7 +1,9 @@
 package adaitw.java;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 public class Empresa {
     List<Vendedor> vendedores;
@@ -11,18 +13,27 @@ public class Empresa {
     }
 
     public List<Vendedor> getVendedores() {
+        Iterator<Vendedor> ve = vendedores.iterator();
+        while (ve.hasNext()) {
+            System.out.println(ve.next());
+        }
         return vendedores;
     }
 
-    public void setVendedores(List<Vendedor> vendedores) {
-        this.vendedores = vendedores;
+    public void cargarVendedor(){
+        Scanner scanner = new Scanner(System.in);
+        Vendedor v = new Vendedor();
+        System.out.println("Ingrese CODIGO vendedor: ");
+        String codigo = scanner.next();
+        v.setCodigo(codigo);
+        vendedores.add(v);
+
     }
 
-    public void cargarVendedor(Vendedor vendedor){
-        vendedores.add(vendedor);
+    @Override
+    public String toString() {
+        return "Empresa{" +
+                "vendedores=" + vendedores +
+                '}';
     }
-
-
-
-
 }

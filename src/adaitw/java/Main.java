@@ -8,93 +8,63 @@ public class Main {
 
     public static void main(String[] args) {
         Empresa e = new Empresa();
+        Vendedor v = new Vendedor();
         List<Vendedor> vendedores = new ArrayList<>();
         List<Oportunidad> oportunidades = new ArrayList<>();
+        List <Cliente> listaClientes = new ArrayList<>();
         List<Prospecto> prospectos = new ArrayList<>();
         Oportunidad oportunidad = new Oportunidad();
 
 
         Scanner sc = new Scanner(System.in);
         int choice = 0;
-        String usuario = "";
+
         do{
             System.out.println("\n ***  MENU PRINCIPAL  *** \n");
             System.out.println("1.Cargar Nuevo Vendedor");
-            System.out.println("2.Cargar Nueva Oportunidad");
-            System.out.println("3.Cargar Nuevo Prospecto");
+            System.out.println("2.Cargar Nuevo Cliente");
+            System.out.println("3.Cargar Nueva Oportunidad");
             System.out.println("4.Ver Ficha");
-            System.out.println("5.Ver Prospectos");
-            System.out.println("6.Ver Vendedores");
+            System.out.println("5.Ver .....");
+            System.out.println("6.Listar Vendedores");
+            System.out.println("7.Listar Clientes");
+            System.out.println("8.Listar Oportunidades");
             System.out.println("0. Salir");
             System.out.print("Ingrese la opción deseada: ");
             choice = sc.nextInt();
             switch (choice){
                 case 1:
-                    cargarVendedor(e);
+                    e.cargarVendedor();
                     break;
                 case 2:
-                    crearOportunidad();
+                    v.crearOportunidad();
                     break;
                 case 3:
-                    agregarProspecto(oportunidad);
+                    v.crearCliente();
                     break;
                 case 4:
                     oportunidad.OportunitySheet();
                     break;
                 case 5:
-                    System.out.println(oportunidad.getProspecto());
-                    System.out.println(prospectos.size());
+                    //System.out.println(oportunidad.getProspecto());
                     break;
                 case 6:
                     System.out.println(e.getVendedores());
                     break;
                 case 7:
+                    System.out.println(v.getListaClientes());
+
+                    break;
+                case 8:
+                    System.out.println(v.getOportunidades());
+                    break;
+                case 9:
                     System.exit(0);
 
             }
         }while(choice!=0);
 
     }
-
-
-    public static void agregarProspecto(Oportunidad oportunidad) {
-        Scanner scanner = new Scanner(System.in);
-        List<Prospecto> prospectos = new ArrayList<>();
-        Prospecto unProspecto = new Prospecto();
-        System.out.println("Ingrese ID: ");
-        int id = scanner.nextInt();
-        unProspecto.setId(id);
-        System.out.println("Empresa (Solo caracteres alfabéticos): ");
-        String empresa = scanner.next();
-        unProspecto.setEmpresa(empresa);
-        System.out.println("Ingrese Contacto: ");
-        String contacto = scanner.next();
-        unProspecto.setContacto(contacto);
-        System.out.println("Ingrese email: ");
-        String email = scanner.next();
-        unProspecto.setEmail(email);
-        oportunidad.agregarProspecto(unProspecto);
-        prospectos.add(unProspecto);
-    }
-    public static void crearOportunidad() {
-        Oportunidad oportunidad = new Oportunidad();
-        List<Prospecto> prospectos = oportunidad.getProspecto();
-        Prospecto unProspecto = prospectos.get(0);
-        Prospecto p = (Prospecto) unProspecto;
-
-    }
-
-    public static void cargarVendedor(Empresa e){
-        Scanner scanner = new Scanner(System.in);
-        List<Vendedor> vendedores = new ArrayList<>();
-        Vendedor v = new Vendedor();
-        System.out.println("Ingrese CODIGO vendedor: ");
-        String codigo = scanner.next();
-        v.setCodigo(codigo);
-        e.cargarVendedor(v);
-
-    }
-
 
 
 }

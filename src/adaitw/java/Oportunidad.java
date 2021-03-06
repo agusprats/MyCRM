@@ -2,42 +2,32 @@ package adaitw.java;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Oportunidad {
-    private List<Prospecto> prospectos = new ArrayList<>() ;
+public class Oportunidad  {
+    private int numeroOp;
     private LocalDate contactDate;
     private Boolean newCall;
     private Potencial potencial;
     private List<Item> items;// productos y servicios ofrecidos
     private Boolean precioReferencia;
 
-    public Oportunidad(List<Prospecto> prospectos, LocalDate contactDate, Boolean newCall, Potencial potencial, Boolean precioReferencia){
-        this.prospectos = prospectos;
+    public Oportunidad(){
+
+        this.numeroOp= numeroOp;
         this.contactDate = contactDate;
         this.newCall = newCall;
         this.precioReferencia = precioReferencia;
     }
 
-    public Oportunidad() {
+
+    public int getNumeroOp() {
+        return numeroOp;
     }
 
-    public  List<Prospecto> getProspecto() {
-        return prospectos;
-    }
-
-    public void agregarProspecto(Prospecto prospecto) {
-        prospectos.add(prospecto);
-    }
-
-    public void eliminarProspecto(Prospecto prospecto){
-        prospectos.remove(prospecto);
-    }
-
-    public void reemplazarProspecto(Prospecto prospecto){
-        this.prospectos = prospectos;
+    public void setNumeroOp(int numeroOp) {
+        this.numeroOp = numeroOp;
     }
 
     public LocalDate getContactDate() {
@@ -57,9 +47,25 @@ public class Oportunidad {
         }
     }
 
+    public void setContactDate(LocalDate contactDate) {
+        this.contactDate = contactDate;
+    }
+
+    public void setNewCall(Boolean newCall) {
+        this.newCall = newCall;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void setPrecioReferencia(Boolean precioReferencia) {
+        this.precioReferencia = precioReferencia;
+    }
+
     public String getnewCall() {
         if (newCall) {
-            return " Acepta llamados";
+            return " LLamar";
         } else {
             return " No llamar";
         }
@@ -94,10 +100,16 @@ public class Oportunidad {
     }
 
     public String OportunitySheet() {
-        return " " + getProspecto() + " - Contactar? : " + getnewCall() + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
+        return "Contactar? : " + getnewCall() + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
     }
 
-
+    @Override
+    public String toString() {
+        return "Oportunidad{" +
+                "Operación Nº: " + getNumeroOp() +
+                " - Volver a contactar? " + getnewCall() +
+                '}';
+    }
 }
 
 
