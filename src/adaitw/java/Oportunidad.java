@@ -15,6 +15,7 @@ public class Oportunidad {
     private Potencial potencial;
     private List<Item> items;// productos y servicios ofrecidos
     private Boolean precioReferencia;
+    private String comentario;
 
     public Oportunidad(){
         this.numeroOp= numeroOp;
@@ -25,6 +26,7 @@ public class Oportunidad {
         this.newCall = newCall;
         this.precioReferencia = precioReferencia;
         this.potencial= potencial;
+        this.comentario = comentario;
     }
 
 
@@ -60,8 +62,22 @@ public class Oportunidad {
         this.cargo = cargo;
     }
 
+    public void setNewCall(Boolean newCall) {
+        this.newCall = newCall;
+    }
+
+    public String getnewCall() {
+        if (newCall) {
+            return "Llamar nuevamente";
+        } else {
+            return "No llamar";
+        }
+    }
     public LocalDate getContactDate() {
         return contactDate;
+    }
+    public void setContactDate(LocalDate contactDate) {
+        this.contactDate = contactDate;
     }
 
     public String ultimoContacto() {
@@ -77,28 +93,16 @@ public class Oportunidad {
         }
     }
 
-    public void setContactDate(LocalDate contactDate) {
-        this.contactDate = contactDate;
+    public void setPotencial(Potencial potencial) {
+        this.potencial = potencial;
+    }
+
+    public Potencial getPotencial() {
+        return potencial;
     }
 
     public void setItems(List<Item> items) {
         this.items = items;
-    }
-
-    public void setPrecioReferencia(Boolean precioReferencia) {
-        this.precioReferencia = precioReferencia;
-    }
-
-    public void setNewCall(Boolean newCall) {
-        this.newCall = newCall;
-    }
-
-    public String getnewCall() {
-        if (newCall) {
-            return "Llamar";
-        } else {
-            return "No llamar";
-        }
     }
 
     public void setPrecioReferencia(String precioReferencia) {
@@ -117,20 +121,17 @@ public class Oportunidad {
         }
     }
 
-    public void setPotencial() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Escribe el potencial: Negativo, Neutral, Positivo ");
-        String entry=sc.next();
-        Potencial pot = Enum.valueOf(Potencial.class, entry);
-        System.out.println("Potencial = "+ pot.getSigno());
+    public String getComentario() {
+        return comentario;
     }
 
-    public Potencial getPotencial() {
-        return potencial;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public String OportunitySheet() {
-        return "Contactar? : " + newCall + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
+        return "Nº OPO: " + numeroOp +", Empresa: '" + empresa +
+                '\'' +"\n ¿Contactar? : " + newCall + "\n - Primer Contacto: " + contactDate+ "\n - Potencial: "+ getPotencial();
     }
 
 
@@ -138,15 +139,16 @@ public class Oportunidad {
     @Override
     public String toString() {
         return "Oportunidad{" +
-                "Nº OPO=" + numeroOp +
-                ", Empresa='" + empresa + '\'' +
-                ", Contacto='" + contacto + '\'' +
-                ", Cargo='" + cargo + '\'' +
-                ", ¿Contactar Nuevamente?=" + getnewCall() +
-                ", Primer Contacto=" + contactDate +
-                ", Potencial=" + potencial +
-                ", items=" + items +
-                ", Precio Referencia=" + precioReferencia +
+                "Nº OPO: " + numeroOp +
+                ", Empresa: '" + empresa + '\'' +
+                ", Contacto: '" + contacto + '\'' +
+                ", Cargo: '" + cargo + '\'' +
+                ", Primer Contacto: " + contactDate +
+                ", ¿Contactar? " + getnewCall() +
+                ", Potencial: " + potencial.getSigno()+
+                ", items: " + items +
+                ", Precio Referencia: " + precioReferencia +
+                ", Comentarios Adicionales: " + comentario +
                 '}';
     }
 }
@@ -165,3 +167,9 @@ public class Oportunidad {
         }
         }
  */
+ /*
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escribe el potencial: Negativo, Neutral, Positivo ");
+        String entry=sc.next();
+        Potencial pot = Enum.valueOf(Potencial.class, entry);
+        System.out.println("Potencial: "+ pot.getSigno());*/

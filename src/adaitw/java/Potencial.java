@@ -1,7 +1,7 @@
 package adaitw.java;
 
 public enum Potencial {
-    negativo("-"), neutral("|"), positivo("+");
+    negativo("(-)"), neutral("(|)"), positivo("(+)");
 
     private Potencial(String signo) {
         this.signo=signo;
@@ -15,12 +15,9 @@ public enum Potencial {
 }
 
 /*
-
-
-     negativo,
+    negativo,
     neutral,
     positivo;
-
     private Potencial() {
     }
     */

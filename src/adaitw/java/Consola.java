@@ -10,17 +10,6 @@ public class Consola {
     private Consola() {
     }
 
-    public static int validateInt(String prompt) {
-        System.out.print(prompt);
-
-        while(!scanner.hasNextInt()) {
-            System.out.print(prompt);
-            scanner.next();
-        }
-
-        int input = scanner.nextInt();
-        return input;
-    }
 
     public static int validateInt(String prompt, int min, int max) {
         int input;
@@ -71,7 +60,21 @@ public class Consola {
         return result;
     }
 
+
     static {
         scanner = new Scanner(System.in);
     }
 }
+
+
+/*public static int validateInt(String prompt) {
+        System.out.print(prompt);
+
+        while(!scanner.hasNextInt()) {
+            System.out.print(prompt);
+            scanner.next();
+        }
+
+        int input = scanner.nextInt();
+        return input;
+    }*/

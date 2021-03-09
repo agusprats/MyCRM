@@ -64,7 +64,17 @@ public class Vendedor implements Controller {
         System.out.println("Cargo: ");
         String cargo = scanner.next();
         op.setCargo(cargo);
+        System.out.println("Primer contacto (YYYY-MM-DD):");
+        LocalDate contactDate = LocalDate.parse(scanner.next());
+        op.setContactDate(contactDate);
         op.setNewCall(Boolean.parseBoolean(Consola.validarNewCall("¿Contactar nuevamente? (true/false): ")));
+        System.out.println("Escribe el potencial: Negativo, Neutral, Positivo ");
+        String entry=scanner.next();
+        Potencial potencial = Enum.valueOf(Potencial.class, entry);
+        op.setPotencial(potencial);
+        System.out.println("Comentarios Adicionales: ");
+        String comentario = scanner.next();
+        op.setComentario(comentario);
         listaOportunidades.add(op);
         System.out.println(getOportunidades());
 
@@ -101,11 +111,8 @@ public class Vendedor implements Controller {
 
 
 
-        /*System.out.println("Fecha de contacto ");
-        LocalDate contactDate = LocalDate.parse(scanner.next());
-        op.setContactDate(contactDate);
+        /*
         op.setPotencial();
-
         //List<Prospecto> prospectos = op.getProspecto();
         //Prospecto unProspecto = prospectos.get(0);
         //Prospecto p = (Prospecto) unProspecto; */
@@ -127,15 +134,8 @@ public class Vendedor implements Controller {
         System.out.println("Ingrese ID: ");
         int id = scanner.nextInt();
         unProspecto.setId(id);
-        System.out.println("Empresa (Solo caracteres alfabéticos): ");
-        String empresa = scanner.next();
-        unProspecto.setEmpresa(empresa);
-        System.out.println("Ingrese Contacto: ");
-        String contacto = scanner.next();
-        unProspecto.setContacto(contacto);
-        System.out.println("Ingrese email: ");
-        String email = scanner.next();
-        unProspecto.setEmail(email);
+
+
         oportunidad.agregarProspecto(unProspecto);
         prospectos.add(unProspecto);
     }
