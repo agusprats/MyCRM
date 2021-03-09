@@ -1,27 +1,39 @@
 package adaitw.java;
 
+import java.io.Console;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class Vendedor {
-    private String codigo;
+public class Vendedor implements Controller {
+    private String id;
+    private String nombre;
     List <Cliente> listaClientes;
     List<Oportunidad> listaOportunidades;
 
     public Vendedor() {
-        this.codigo = codigo;
+        this.id = id;
+        this.nombre = nombre;
         this.listaClientes = new ArrayList<>();
         this.listaOportunidades = new ArrayList<>();
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getId() {
+        return id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public List<Cliente> getListaClientes() {
@@ -36,13 +48,12 @@ public class Vendedor {
         this.listaOportunidades.add(oportunidad);
     }
 
-    public void crearProspecto(){
+    public void crearCliente(){
         Scanner scanner = new Scanner(System.in);
         Cliente unCliente = new Cliente();
-        Oportunidad op = new Oportunidad();
-        System.out.println("Codigo: ");
-        int codigo = scanner.nextInt();
-        unCliente.setCodigo(codigo);
+        System.out.println("ID (Sólo números): ");
+        int id = scanner.nextInt();
+        unCliente.setId(id);
         System.out.println("Empresa: ");
         String empresa = scanner.next();
         unCliente.setEmpresa(empresa);
@@ -52,15 +63,8 @@ public class Vendedor {
         System.out.println("Cargo: ");
         String cargo = scanner.next();
         unCliente.setCargo(cargo);
-        System.out.println("Ingrese Numero Oportunidad (Solo números):  ");
-        int numeroOp = scanner.nextInt();
-        op.setNumeroOp(numeroOp);
-        System.out.println("Contactar nuevamente? (true/false) ");
-        Boolean newCall = scanner.hasNext();
-        op.setNewCall(newCall);
         listaClientes.add(unCliente);
-        listaOportunidades.add(op);
-        System.out.println(getListaClientes()+""+ getOportunidades());
+        System.out.println(getListaClientes());
 }
 
 
@@ -70,36 +74,45 @@ public class Vendedor {
         System.out.println("Ingrese Numero Oportunidad (Solo números):  ");
         int numeroOp = scanner.nextInt();
         op.setNumeroOp(numeroOp);
-        System.out.println("Contactar nuevamente? (true/false) ");
-        Boolean newCall = scanner.hasNext();
-        op.setNewCall(newCall);
-        /*
-        System.out.println("Fecha de contacto ");
-        LocalDate contactDate = LocalDate.parse(scanner.next());
-        op.setContactDate(contactDate);*/
-
+        op.setNewCall(Boolean.parseBoolean(Consola.validateNewCall("¿Contactar nuevamente? (true/false): ")));
         listaOportunidades.add(op);
-
-        //System.out.println(oportunidades);
-
-        //List<Prospecto> prospectos = op.getProspecto();
-        //Prospecto unProspecto = prospectos.get(0);
-        //Prospecto p = (Prospecto) unProspecto;
+        System.out.println(getOportunidades());
 
     }
+
 
     @Override
     public String toString() {
         return "Vendedor{" +
-                //"oportunidades=" + oportunidades +
-                "Codigo='" + getCodigo() + '\'' +
+                "Codigo='" + getId() + '\'' +
+                "Nombre='" + getNombre() + '\'' +
                 '}';
     }
 
 
 }
 
+
+
+        /*System.out.println("Fecha de contacto ");
+        LocalDate contactDate = LocalDate.parse(scanner.next());
+        op.setContactDate(contactDate);
+        op.setPotencial();
+
+        //List<Prospecto> prospectos = op.getProspecto();
+        //Prospecto unProspecto = prospectos.get(0);
+        //Prospecto p = (Prospecto) unProspecto; */
+
    /*
+
+   public List<String> prospectoToString() {
+        List<String> data = new ArrayList();
+        data.add(this.empresa);
+        data.add(this.contacto);
+        data.add(this.cargo);
+
+        return data;
+    }
     public static void agregarProspecto(Oportunidad oportunidad) {
         Scanner scanner = new Scanner(System.in);
         List<Prospecto> prospectos = new ArrayList<>();

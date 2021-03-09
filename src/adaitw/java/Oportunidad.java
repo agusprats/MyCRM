@@ -52,10 +52,6 @@ public class Oportunidad extends Cliente {
         this.contactDate = contactDate;
     }
 
-    public void setNewCall(Boolean newCall) {
-        this.newCall = newCall;
-    }
-
     public void setItems(List<Item> items) {
         this.items = items;
     }
@@ -64,11 +60,15 @@ public class Oportunidad extends Cliente {
         this.precioReferencia = precioReferencia;
     }
 
+    public void setNewCall(Boolean newCall) {
+        this.newCall = newCall;
+    }
+
     public String getnewCall() {
         if (newCall) {
-            return " LLamar";
+            return "Llamar";
         } else {
-            return " No llamar";
+            return "No llamar";
         }
     }
 
@@ -88,7 +88,7 @@ public class Oportunidad extends Cliente {
         }
     }
 
-    public void setPotencial(Potencial potencial) {
+    public void setPotencial() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Escribe el potencial: Negativo, Neutral, Positivo ");
         String entry=sc.next();

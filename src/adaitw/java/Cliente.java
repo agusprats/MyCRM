@@ -1,24 +1,34 @@
 package adaitw.java;
 
 public class Cliente {
-    private int codigo;
+    private int id;
     private String empresa;
     private String contacto;
     private String cargo;
+    private Boolean avanzar;
 
     public Cliente() {
-        this.codigo = codigo;
+        this.id = id;
         this.empresa = empresa;
         this.contacto = contacto;
         this.cargo = cargo;
+        this.avanzar = avanzar;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public Boolean getAvanzar() {
+        return avanzar;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setAvanzar(Boolean avanzar) {
+        this.avanzar = avanzar;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmpresa() {
@@ -48,10 +58,12 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "Codigo='" + codigo + '\'' +
+                "Id='" + id + '\'' +
                 " - Empresa='" + empresa + '\'' +
                 " - Contacto='" + contacto + '\'' +
                 " - Cargo='" + cargo + '\'' +
                 '}';
     }
+
+
 }
