@@ -1,29 +1,24 @@
 package adaitw.java;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void ingresoAdministrador(){
         Vendedor v = new Vendedor();
-        List<Vendedor> vendedores = new ArrayList<>();
         Administrador administrador = new Administrador();
         Scanner sc = new Scanner(System.in);
 
-        int choice2 = 0;
-
-        do{
+        boolean cont = true;
+        while(cont){
             System.out.println("\n ***  PANEL ADMINISTRADOR  *** \n");
             System.out.println("1.CREAR VENDEDOR");
             System.out.println("2.CREAR CLIENTE");
             System.out.println("3.LISTAR VENDEDORES");
             System.out.println("4.LISTAR CLIENTES");
-            System.out.println("0. Salir");
+            System.out.println("5.VOLVER MENU PRINCIPAL");
             System.out.print("Ingrese la opción deseada: ");
-            choice2 = sc.nextInt();
+            int choice2 = sc.nextInt();
             switch (choice2){
                 case 1:
                     administrador.crearVendedor();
@@ -38,9 +33,9 @@ public class Main {
                     System.out.println(administrador.getListaClientes());
                     break;
                 case 5:
-                    System.exit(0);
+                   cont= false;
             }
-        }while(choice2!=0);
+        }return;
 
     }
 
@@ -49,38 +44,38 @@ public class Main {
         Oportunidad oportunidad = new Oportunidad();
         Administrador administrador = new Administrador();
         Scanner sc = new Scanner(System.in);
-        int choice3 = 0;
 
-        do {
+        boolean isRun = true;
+        while(isRun){
             System.out.println("\n ***  PANEL VENDEDOR  *** \n");
-            System.out.println("1.CREAR CLIENTE");
-            System.out.println("2.CREAR OPORTUNIDAD");
-            System.out.println("3.LISTAR CLIENTES");
-            System.out.println("4.LISTAR OPORTUNIDADES");
+            System.out.println("1.CREAR OPORTUNIDAD");
+            System.out.println("2.CREAR CLIENTE");
+            System.out.println("3.LISTAR OPORTUNIDADES");
+            System.out.println("4.LISTAR CLIENTES");
             System.out.println("5.Ver Ficha");
-            System.out.println("0. Salir");
+            System.out.println("6.VOLVER MENU PRINCIPAL");
             System.out.print("Ingrese la opción deseada: ");
-            choice3 = sc.nextInt();
+            int choice3 = sc.nextInt();
             switch (choice3) {
                 case 1:
-                    v.crearCliente();
-                    break;
-                case 2:
                     v.crearOportunidad();
                     break;
+                case 2:
+                    v.crearCliente();
+                    break;
                 case 3:
-                    System.out.println(v.getListaClientes());
+                    System.out.println(v.getOportunidades());
                     break;
                 case 4:
-                    System.out.println(v.getOportunidades());
+                    System.out.println(v.getListaClientes());
                     break;
                 case 5:
                     oportunidad.OportunitySheet();
                     break;
-                case 7:
-                    System.exit(0);
+                case 6:
+                   isRun = false;
             }
-        } while (choice3 != 0);
+        } return;
 
     }
 

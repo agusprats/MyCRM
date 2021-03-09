@@ -1,8 +1,7 @@
 package adaitw.java;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Administrador implements Controller{
     List<Vendedor> vendedores;
@@ -23,6 +22,7 @@ public class Administrador implements Controller{
         return vendedores;
     }
 
+
     public void crearVendedor(){
         Scanner scanner = new Scanner(System.in);
         Vendedor v = new Vendedor();
@@ -39,10 +39,6 @@ public class Administrador implements Controller{
     public void crearCliente(){
         Scanner scanner = new Scanner(System.in);
         Cliente unCliente = new Cliente();
-        Oportunidad op = new Oportunidad();
-        System.out.println("ID (Sólo números): ");
-        int id = scanner.nextInt();
-        unCliente.setId(id);
         System.out.println("Empresa: ");
         String empresa = scanner.next();
         unCliente.setEmpresa(empresa);
@@ -52,11 +48,20 @@ public class Administrador implements Controller{
         System.out.println("Cargo: ");
         String cargo = scanner.next();
         unCliente.setCargo(cargo);
-
+        unCliente.setPhoneNumber(Consola.validarTel("Número Telefónico (10 dígitos): "));
+        unCliente.setEmail(Consola.validarEmail("Email (ejemplo@ejemplo.com): "));
         listaClientes.add(unCliente);
         System.out.println(getListaClientes());
     }
 
+
+    @Override
+    public String toString() {
+        return "Administrador{" +
+                "vendedores=" + vendedores +
+                ", listaClientes=" + listaClientes +
+                '}';
+    }
 }
 
 

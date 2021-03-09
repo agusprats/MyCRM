@@ -38,7 +38,7 @@ public class Consola {
         return input;
     }
 
-    public static String validateNewCall(String prompt) {
+    public static String validarNewCall(String prompt) {
         System.out.print(prompt);
 
         String result;
@@ -49,6 +49,27 @@ public class Consola {
         return result;
     }
 
+    public static String validarEmail(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"); result = scanner.next()) {
+            System.out.print("Formato inválido, Intente nuevamente: ");
+        }
+
+        return result;
+    }
+
+    public static String validarTel(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.matches("^\\d{10}$"); result = scanner.next()) {
+            System.out.print("Formato inválido, Intente nuevamente: ");
+        }
+
+        return result;
+    }
 
     static {
         scanner = new Scanner(System.in);

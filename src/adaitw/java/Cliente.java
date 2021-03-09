@@ -1,69 +1,74 @@
 package adaitw.java;
 
-public class Cliente {
-    private int id;
+public class Cliente extends Oportunidad {
     private String empresa;
     private String contacto;
     private String cargo;
-    private Boolean avanzar;
+    private String email;
+    private String phoneNumber;
 
     public Cliente() {
-        this.id = id;
         this.empresa = empresa;
         this.contacto = contacto;
         this.cargo = cargo;
-        this.avanzar = avanzar;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
-    public Boolean getAvanzar() {
-        return avanzar;
-    }
-
-    public void setAvanzar(Boolean avanzar) {
-        this.avanzar = avanzar;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    @Override
     public String getEmpresa() {
         return empresa;
     }
 
+    @Override
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
 
+    @Override
     public String getContacto() {
         return contacto;
     }
 
+    @Override
     public void setContacto(String contacto) {
         this.contacto = contacto;
     }
 
+    @Override
     public String getCargo() {
         return cargo;
     }
 
+    @Override
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "Id='" + id + '\'' +
-                " - Empresa='" + empresa + '\'' +
-                " - Contacto='" + contacto + '\'' +
-                " - Cargo='" + cargo + '\'' +
+               "  Empresa='" + empresa + '\'' +
+                " Contacto='" + contacto + '\'' +
+                " Cargo='" + cargo + '\'' +
+                " Email='" + email + '\'' +
+                " Tel='" + phoneNumber + '\'' +
                 '}';
     }
-
-
 }

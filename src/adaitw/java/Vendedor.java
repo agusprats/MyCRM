@@ -48,12 +48,30 @@ public class Vendedor implements Controller {
         this.listaOportunidades.add(oportunidad);
     }
 
+
+    public void crearOportunidad() {
+        Scanner scanner = new Scanner(System.in);
+        Oportunidad op = new Oportunidad();
+        System.out.println("Ingrese Numero Oportunidad (Solo números):  ");
+        int numeroOp = scanner.nextInt();
+        op.setNumeroOp(numeroOp);
+        System.out.println("Empresa: ");
+        String empresa = scanner.next();
+        op.setEmpresa(empresa);
+        System.out.println("Contacto: ");
+        String contacto = scanner.next();
+        op.setContacto(contacto);
+        System.out.println("Cargo: ");
+        String cargo = scanner.next();
+        op.setCargo(cargo);
+        op.setNewCall(Boolean.parseBoolean(Consola.validarNewCall("¿Contactar nuevamente? (true/false): ")));
+        listaOportunidades.add(op);
+        System.out.println(getOportunidades());
+
+    }
     public void crearCliente(){
         Scanner scanner = new Scanner(System.in);
         Cliente unCliente = new Cliente();
-        System.out.println("ID (Sólo números): ");
-        int id = scanner.nextInt();
-        unCliente.setId(id);
         System.out.println("Empresa: ");
         String empresa = scanner.next();
         unCliente.setEmpresa(empresa);
@@ -63,23 +81,12 @@ public class Vendedor implements Controller {
         System.out.println("Cargo: ");
         String cargo = scanner.next();
         unCliente.setCargo(cargo);
+        unCliente.setPhoneNumber(Consola.validarTel("Número Telefónico (10 dígitos): "));
+        unCliente.setEmail(Consola.validarEmail("Email (ejemplo@ejemplo.com): "));
+
         listaClientes.add(unCliente);
         System.out.println(getListaClientes());
-}
-
-
-    public void crearOportunidad() {
-        Scanner scanner = new Scanner(System.in);
-        Oportunidad op = new Oportunidad();
-        System.out.println("Ingrese Numero Oportunidad (Solo números):  ");
-        int numeroOp = scanner.nextInt();
-        op.setNumeroOp(numeroOp);
-        op.setNewCall(Boolean.parseBoolean(Consola.validateNewCall("¿Contactar nuevamente? (true/false): ")));
-        listaOportunidades.add(op);
-        System.out.println(getOportunidades());
-
     }
-
 
     @Override
     public String toString() {

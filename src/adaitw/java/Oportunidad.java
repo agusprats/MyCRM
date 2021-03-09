@@ -5,8 +5,11 @@ import java.time.Period;
 import java.util.List;
 import java.util.Scanner;
 
-public class Oportunidad extends Cliente {
+public class Oportunidad {
     private int numeroOp;
+    private String empresa;
+    private String contacto;
+    private String cargo;
     private LocalDate contactDate;
     private Boolean newCall;
     private Potencial potencial;
@@ -15,6 +18,9 @@ public class Oportunidad extends Cliente {
 
     public Oportunidad(){
         this.numeroOp= numeroOp;
+        this.empresa = empresa;
+        this.contacto = contacto;
+        this.cargo = cargo;
         this.contactDate = contactDate;
         this.newCall = newCall;
         this.precioReferencia = precioReferencia;
@@ -30,6 +36,29 @@ public class Oportunidad extends Cliente {
         this.numeroOp = numeroOp;
     }
 
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
     public LocalDate getContactDate() {
         return contactDate;
@@ -101,14 +130,23 @@ public class Oportunidad extends Cliente {
     }
 
     public String OportunitySheet() {
-        return "Contactar? : " + getnewCall() + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
+        return "Contactar? : " + newCall + " - Ultimo Contacto: " + ultimoContacto()+ getPotencial();
     }
+
+
 
     @Override
     public String toString() {
         return "Oportunidad{" +
-                "Operación Nº: " + getNumeroOp() +
-                " - Volver a contactar? " + getnewCall() +
+                "Nº OPO=" + numeroOp +
+                ", Empresa='" + empresa + '\'' +
+                ", Contacto='" + contacto + '\'' +
+                ", Cargo='" + cargo + '\'' +
+                ", ¿Contactar Nuevamente?=" + getnewCall() +
+                ", Primer Contacto=" + contactDate +
+                ", Potencial=" + potencial +
+                ", items=" + items +
+                ", Precio Referencia=" + precioReferencia +
                 '}';
     }
 }
