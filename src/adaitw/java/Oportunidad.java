@@ -98,7 +98,7 @@ public class Oportunidad {
 
         //Alerta para futuros llamados si pasa un mes:
         if(diff.getMonths() >= 1 ){
-            return "Ya transcurrió un mes : \n"+diff.getYears()+" Año - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
+            return "Transcurrió un mes !!!: \n"+diff.getYears()+" Año - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
         }else{
             return "Tiempo desde primer contacto: \n"+diff.getYears()+" Año/s - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
         }
@@ -141,8 +141,9 @@ public class Oportunidad {
                 ", Precio Referencia: " + getPrecioReferencia() +
                 ", ¿Acepta Seguimiento? " + getnewCall() +
                 ", Potencial: " + potencial.getSigno()+
-                ", items: " + items +
                 ", Comentarios Adicionales: " + comentario +
+                ", Alerta Seguimiento: " + ultimoContacto() +
+                ", items: " + items +
                 '}';
     }
 }

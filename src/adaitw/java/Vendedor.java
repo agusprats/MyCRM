@@ -74,7 +74,7 @@ public class Vendedor implements ControlCentral {
         Potencial potencial = Enum.valueOf(Potencial.class, entry);
         op.setPotencial(potencial);
         op.setComentario(Consola.validarComentario("Comentarios Adicionales: "));
-        //op.ultimoContacto();
+        op.ultimoContacto();
         listaOportunidades.add(op);
         System.out.println(getOportunidades());
 
