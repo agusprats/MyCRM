@@ -130,7 +130,6 @@ public class Oportunidad {
     }
 
 
-
     @Override
     public String toString() {
         return "Oportunidad{" +

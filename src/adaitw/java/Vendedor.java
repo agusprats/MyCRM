@@ -108,8 +108,21 @@ public class Vendedor implements ControlCentral {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
-        op.setPotencial();
+
         //List<Prospecto> prospectos = op.getProspecto();
         //Prospecto unProspecto = prospectos.get(0);
         //Prospecto p = (Prospecto) unProspecto; */

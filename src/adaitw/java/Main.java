@@ -36,7 +36,6 @@ public class Main {
                    cont= false;
             }
         }
-
     }
 
     public static void ingresoVendedor() {
@@ -75,7 +74,6 @@ public class Main {
                    isRun = false;
             }
         }
-
     }
 
     public static void main(String[] args) {
@@ -126,6 +124,11 @@ Sales funnel / embudo de ventas:
 
 
 /*
+
+
+
+
+
 Vendedor v = new Vendedor();
 Oportunidad oportunidad = new Oportunidad();
         Scanner sc = new Scanner(System.in);
@@ -140,10 +143,6 @@ Oportunidad oportunidad = new Oportunidad();
                     administrador.cargarVendedor();
                     break;
                 case 2:
-                    v.crearCliente();
-                    administrador.crearCliente();
-                    break;
-                case 3:
                     v.crearOportunidad();
                     break;
 
