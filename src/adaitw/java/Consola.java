@@ -10,6 +10,37 @@ public class Consola {
     private Consola() {
     }
 
+    public static String validarId(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.matches("^V[0-9\\s]+"); result = scanner.next()) {
+            System.out.print("Formato inválido, Intente nuevamente:  ");
+        }
+
+        return result;
+    }
+
+    public static String validarOp(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.matches("^OP[0-9\\s]+"); result = scanner.next()) {
+            System.out.print("Formato inválido, Intente nuevamente:  ");
+        }
+
+        return result;
+    }
+
+    public static String validarNombreVendedor(String prompt) {
+        String result;
+        for(result = scanner.nextLine(); !result.matches("^[a-zA-Z\\s]+"); result = scanner.nextLine()) {
+            System.out.print(prompt);
+        }
+
+        return result;
+    }
+
 
     public static int validateInt(String prompt, int min, int max) {
         int input;
@@ -38,6 +69,17 @@ public class Consola {
         return result;
     }
 
+    public static String validarPrecioReferencia(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.equals("true") && !result.equals("false"); result = scanner.next()) {
+            System.out.print(prompt);
+        }
+
+        return result;
+    }
+
     public static String validarEmail(String prompt) {
         System.out.print(prompt);
 
@@ -55,6 +97,15 @@ public class Consola {
         String result;
         for(result = scanner.next(); !result.matches("^\\d{10}$"); result = scanner.next()) {
             System.out.print("Formato inválido, Intente nuevamente: ");
+        }
+
+        return result;
+    }
+
+    public static String validarComentario(String prompt) {
+        String result;
+        for(result = scanner.nextLine(); !result.matches("^[a-zA-Z0-9+_.@$\\s]+"); result = scanner.nextLine()) {
+            System.out.print(prompt);
         }
 
         return result;

@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Main {
 
+    //VISTA
     public static void ingresoAdministrador(){
-        Vendedor v = new Vendedor();
         Administrador administrador = new Administrador();
         Scanner sc = new Scanner(System.in);
 
@@ -35,14 +35,13 @@ public class Main {
                 case 5:
                    cont= false;
             }
-        }return;
+        }
 
     }
 
     public static void ingresoVendedor() {
         Vendedor v = new Vendedor();
         Oportunidad oportunidad = new Oportunidad();
-        Administrador administrador = new Administrador();
         Scanner sc = new Scanner(System.in);
 
         boolean isRun = true;
@@ -52,7 +51,7 @@ public class Main {
             System.out.println("2.CREAR CLIENTE");
             System.out.println("3.LISTAR OPORTUNIDADES");
             System.out.println("4.LISTAR CLIENTES");
-            System.out.println("5.Ver Ficha");
+            System.out.println("5.VER FICHA");
             System.out.println("6.VOLVER MENU PRINCIPAL");
             System.out.print("Ingrese la opción deseada: ");
             int choice3 = sc.nextInt();
@@ -70,12 +69,12 @@ public class Main {
                     System.out.println(v.getListaClientes());
                     break;
                 case 5:
-                    oportunidad.OportunitySheet();
+                    System.out.println(oportunidad.OportunitySheet());
                     break;
                 case 6:
                    isRun = false;
             }
-        } return;
+        }
 
     }
 
@@ -104,74 +103,6 @@ public class Main {
 
     }
 }
-
-
-
-
-        /*
-        Vendedor v = new Vendedor();
-        Administrador administrador = null;
-        List<Vendedor> vendedores = new ArrayList<>();
-        List<Oportunidad> oportunidades = new ArrayList<>();
-        List <Cliente> listaClientes = new ArrayList<>();
-
-        Oportunidad oportunidad = new Oportunidad();
-
-
-        Scanner sc = new Scanner(System.in);
-        int choice = 0;
-
-        do{
-            System.out.println("\n ***  MENU PRINCIPAL  *** \n");
-            System.out.println("1.Cargar Nuevo Vendedor");
-            System.out.println("2.Cargar Nuevo Prospecto");
-            System.out.println("3.Cargar Nueva Oportunidad");
-            System.out.println("4.Ver Ficha");
-            System.out.println("5.Ver .....");
-            System.out.println("6.Listar Vendedores");
-            System.out.println("7.Listar Clientes");
-            System.out.println("8.Listar Oportunidades");
-            System.out.println("0. Salir");
-            System.out.print("Ingrese la opción deseada: ");
-            choice = sc.nextInt();
-            switch (choice){
-                case 1:
-                    administrador.cargarVendedor();
-                    break;
-                case 2:
-                    v.crearCliente();
-                    administrador.crearCliente();
-                    break;
-                case 3:
-                    v.crearOportunidad();
-                    break;
-                case 4:
-                    oportunidad.OportunitySheet();
-                    break;
-                case 5:
-
-
-                case 6:
-                    System.out.println(administrador.getVendedores());
-                    break;
-                case 7:
-                    System.out.println(v.getListaClientes());
-                    break;
-                case 8:
-                    System.out.println(v.getOportunidades());
-                    break;
-                case 9:
-                    System.exit(0);
-
-            }
-        }while(choice!=0);
-
-    */
-
-
-
-
-
 /*CRM para la gestión de ventas en una empresa
 Se requiere un sistema que permita registrar una oportunidad de negocio.
 
@@ -194,15 +125,40 @@ Sales funnel / embudo de ventas:
 
 
 
-
-
-    /*private static void agregarProspecto(Oportunidad oportunidades) {
+/*
+Vendedor v = new Vendedor();
+Oportunidad oportunidad = new Oportunidad();
         Scanner sc = new Scanner(System.in);
-        Prospecto unProspecto = new Prospecto( "RENFE", "Julio", "Jefe", "000111", "julio@mail.com", "Málaga");
-        System.out.print("Indique id: ");
-        int id = sc.nextInt();
-        unProspecto.setId(id);
-        oportunidades.agregarProspecto(unProspecto);
-        unProspecto.prospectoToString();
+        int choice = 0;
+        do{
+            System.out.println("\n ***  MENU PRINCIPAL  *** \n");
+            System.out.println("0. Salir");
+            System.out.print("Ingrese la opción deseada: ");
+            choice = sc.nextInt();
+            switch (choice){
+                case 1:
+                    administrador.cargarVendedor();
+                    break;
+                case 2:
+                    v.crearCliente();
+                    administrador.crearCliente();
+                    break;
+                case 3:
+                    v.crearOportunidad();
+                    break;
 
-    }*/
+                case 9:
+                    System.exit(0);
+
+            }
+        }while(choice!=0);
+
+    */
+
+
+
+
+
+
+
+

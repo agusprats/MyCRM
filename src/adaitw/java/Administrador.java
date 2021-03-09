@@ -1,9 +1,8 @@
 package adaitw.java;
 
-import java.io.*;
 import java.util.*;
 
-public class Administrador implements Controller{
+public class Administrador implements ControlCentral {
     List<Vendedor> vendedores;
     List<Cliente> listaClientes;
 
@@ -26,12 +25,8 @@ public class Administrador implements Controller{
     public void crearVendedor(){
         Scanner scanner = new Scanner(System.in);
         Vendedor v = new Vendedor();
-        System.out.println("Ingrese CODIGO vendedor: ");
-        String id = scanner.next();
-        v.setId(id);
-        System.out.println("Ingrese NOMBRE vendedor: ");
-        String nombre = scanner.next();
-        v.setNombre(nombre);
+        v.setId(Consola.validarId("Ingrese CODIGO: ( V + número/s sin espacios): "));
+        v.setNombre(Consola.validarNombreVendedor("Ingrese NOMBRE: (Solo caracteres alfabéticos): "));
         vendedores.add(v);
     }
 
@@ -65,6 +60,15 @@ public class Administrador implements Controller{
 }
 
 
+  /*private static void agregarProspecto(Oportunidad oportunidades) {
+        Scanner sc = new Scanner(System.in);
+        Prospecto unProspecto = new Prospecto( "RENFE", "Julio", "Jefe", "000111", "julio@mail.com", "Málaga");
+        System.out.print("Indique id: ");
+        int id = sc.nextInt();
+        unProspecto.setId(id);
+        oportunidades.agregarProspecto(unProspecto);
+        unProspecto.prospectoToString();
 
+    }*/
 
 

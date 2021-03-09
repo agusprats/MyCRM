@@ -3,10 +3,9 @@ package adaitw.java;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
-import java.util.Scanner;
 
 public class Oportunidad {
-    private int numeroOp;
+    private String codigoOp;
     private String empresa;
     private String contacto;
     private String cargo;
@@ -18,7 +17,7 @@ public class Oportunidad {
     private String comentario;
 
     public Oportunidad(){
-        this.numeroOp= numeroOp;
+        this.codigoOp = codigoOp;
         this.empresa = empresa;
         this.contacto = contacto;
         this.cargo = cargo;
@@ -30,12 +29,12 @@ public class Oportunidad {
     }
 
 
-    public int getNumeroOp() {
-        return numeroOp;
+    public String getCodigoOp() {
+        return codigoOp;
     }
 
-    public void setNumeroOp(int numeroOp) {
-        this.numeroOp = numeroOp;
+    public void setCodigoOp(String codigoOp) {
+        this.codigoOp = codigoOp;
     }
 
     public String getEmpresa() {
@@ -73,6 +72,18 @@ public class Oportunidad {
             return "No llamar";
         }
     }
+
+    public void setPrecioReferencia(Boolean precioReferencia) {
+        this.precioReferencia = precioReferencia;
+    }
+
+    public String getPrecioReferencia(){
+        if(precioReferencia){
+            return "Se indicó precio";
+        }else {
+            return "Sin precio";
+        }
+    }
     public LocalDate getContactDate() {
         return contactDate;
     }
@@ -105,22 +116,6 @@ public class Oportunidad {
         this.items = items;
     }
 
-    public void setPrecioReferencia(String precioReferencia) {
-        if (precioReferencia.equalsIgnoreCase("si")) {
-            this.precioReferencia = true;
-        } else {
-            this.precioReferencia  = false;
-        }
-    }
-
-    public String getPrecioReferencia(){
-        if(precioReferencia){
-           return "Se indicó precio";
-        }else {
-            return "Sin precio";
-        }
-    }
-
     public String getComentario() {
         return comentario;
     }
@@ -130,8 +125,8 @@ public class Oportunidad {
     }
 
     public String OportunitySheet() {
-        return "Nº OPO: " + numeroOp +", Empresa: '" + empresa +
-                '\'' +"\n ¿Contactar? : " + newCall + "\n - Primer Contacto: " + contactDate+ "\n - Potencial: "+ getPotencial();
+        return "Nº OPO: " + codigoOp +", Empresa: '" + empresa +
+                '\'' +"\n ¿Seguimiento? : " + newCall + "\n - Primer Contacto: " + contactDate+ "\n - Potencial: "+ getPotencial();
     }
 
 
@@ -139,15 +134,15 @@ public class Oportunidad {
     @Override
     public String toString() {
         return "Oportunidad{" +
-                "Nº OPO: " + numeroOp +
+                "  Códigoº: " + codigoOp +
                 ", Empresa: '" + empresa + '\'' +
                 ", Contacto: '" + contacto + '\'' +
                 ", Cargo: '" + cargo + '\'' +
                 ", Primer Contacto: " + contactDate +
-                ", ¿Contactar? " + getnewCall() +
+                ", Precio Referencia: " + getPrecioReferencia() +
+                ", ¿Acepta Seguimiento? " + getnewCall() +
                 ", Potencial: " + potencial.getSigno()+
                 ", items: " + items +
-                ", Precio Referencia: " + precioReferencia +
                 ", Comentarios Adicionales: " + comentario +
                 '}';
     }
@@ -173,3 +168,13 @@ public class Oportunidad {
         String entry=sc.next();
         Potencial pot = Enum.valueOf(Potencial.class, entry);
         System.out.println("Potencial: "+ pot.getSigno());*/
+
+/*
+    public void setPrecioReferencia(String precioReferencia) {
+        if (precioReferencia.equalsIgnoreCase("si")) {
+            this.precioReferencia = true;
+        } else {
+            this.precioReferencia  = false;
+        }
+    }
+*/

@@ -1,13 +1,11 @@
 package adaitw.java;
 
-import java.io.Console;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class Vendedor implements Controller {
+public class Vendedor implements ControlCentral {
     private String id;
     private String nombre;
     List <Cliente> listaClientes;
@@ -48,13 +46,15 @@ public class Vendedor implements Controller {
         this.listaOportunidades.add(oportunidad);
     }
 
+    public void eliminarOportunidad(Oportunidad oportunidad) {
+        this.listaOportunidades.remove(oportunidad);
+    }
+
 
     public void crearOportunidad() {
         Scanner scanner = new Scanner(System.in);
         Oportunidad op = new Oportunidad();
-        System.out.println("Ingrese Numero Oportunidad (Solo números):  ");
-        int numeroOp = scanner.nextInt();
-        op.setNumeroOp(numeroOp);
+        op.setCodigoOp(Consola.validarOp("Ingrese Código Oportunidad ( OP + número/s sin espacios): "));
         System.out.println("Empresa: ");
         String empresa = scanner.next();
         op.setEmpresa(empresa);
@@ -67,14 +67,14 @@ public class Vendedor implements Controller {
         System.out.println("Primer contacto (YYYY-MM-DD):");
         LocalDate contactDate = LocalDate.parse(scanner.next());
         op.setContactDate(contactDate);
-        op.setNewCall(Boolean.parseBoolean(Consola.validarNewCall("¿Contactar nuevamente? (true/false): ")));
-        System.out.println("Escribe el potencial: Negativo, Neutral, Positivo ");
+        op.setPrecioReferencia(Boolean.parseBoolean(Consola.validarPrecioReferencia("¿Se indicó precio de referencia? (true/false): ")));
+        op.setNewCall(Boolean.parseBoolean(Consola.validarNewCall("¿Acepta Seguimiento? (true/false): ")));
+        System.out.println("Indicar potencial: Negativo, Neutral, Positivo ");
         String entry=scanner.next();
         Potencial potencial = Enum.valueOf(Potencial.class, entry);
         op.setPotencial(potencial);
-        System.out.println("Comentarios Adicionales: ");
-        String comentario = scanner.next();
-        op.setComentario(comentario);
+        op.setComentario(Consola.validarComentario("Comentarios Adicionales: "));
+        //op.ultimoContacto();
         listaOportunidades.add(op);
         System.out.println(getOportunidades());
 
@@ -108,10 +108,7 @@ public class Vendedor implements Controller {
 
 
 }
-
-
-
-        /*
+    /*
         op.setPotencial();
         //List<Prospecto> prospectos = op.getProspecto();
         //Prospecto unProspecto = prospectos.get(0);

@@ -1,6 +1,6 @@
 package adaitw.java;
 
-public interface Controller {
+public interface ControlCentral {
     void crearCliente();
 
 
