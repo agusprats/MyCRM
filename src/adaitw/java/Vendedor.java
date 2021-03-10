@@ -52,50 +52,66 @@ public class Vendedor implements ControlCentral {
 
 
     public void crearOportunidad() {
-        Scanner scanner = new Scanner(System.in);
-        Oportunidad op = new Oportunidad();
-        op.setCodigoOp(Consola.validarOp("Ingrese Código Oportunidad ( OP + número/s sin espacios): "));
-        System.out.println("Empresa: ");
-        String empresa = scanner.next();
-        op.setEmpresa(empresa);
-        System.out.println("Contacto: ");
-        String contacto = scanner.next();
-        op.setContacto(contacto);
-        System.out.println("Cargo: ");
-        String cargo = scanner.next();
-        op.setCargo(cargo);
-        System.out.println("Primer contacto (YYYY-MM-DD):");
-        LocalDate contactDate = LocalDate.parse(scanner.next());
-        op.setContactDate(contactDate);
-        op.setPrecioReferencia(Boolean.parseBoolean(Consola.validarPrecioReferencia("¿Se indicó precio de referencia? (true/false): ")));
-        op.setNewCall(Boolean.parseBoolean(Consola.validarNewCall("¿Acepta Seguimiento? (true/false): ")));
-        System.out.println("Indicar potencial: Negativo, Neutral, Positivo ");
-        String entry=scanner.next();
-        Potencial potencial = Enum.valueOf(Potencial.class, entry);
-        op.setPotencial(potencial);
-        op.setComentario(Consola.validarComentario("Comentarios Adicionales: "));
-        op.ultimoContacto();
-        listaOportunidades.add(op);
-        System.out.println(getOportunidades());
-
+        boolean isRun = true;
+        while (isRun) {
+            Scanner scanner = new Scanner(System.in);
+            Oportunidad op = new Oportunidad();
+            op.setCodigoOp(Consola.validarOp("Ingrese Código Oportunidad ( OP + número/s sin espacios): "));
+            System.out.println("Empresa: ");
+            String empresa = scanner.next();
+            op.setEmpresa(empresa);
+            System.out.println("Contacto: ");
+            String contacto = scanner.next();
+            op.setContacto(contacto);
+            System.out.println("Cargo: ");
+            String cargo = scanner.next();
+            op.setCargo(cargo);
+            System.out.println("Primer contacto (YYYY-MM-DD):");
+            LocalDate contactDate = LocalDate.parse(scanner.next());
+            op.setContactDate(contactDate);
+            op.setPrecioReferencia(Boolean.parseBoolean(Consola.validarPrecioReferencia("¿Se indicó precio de referencia? (true/false): ")));
+            op.setNewCall(Boolean.parseBoolean(Consola.validarNewCall("¿Acepta Seguimiento? (true/false): ")));
+            System.out.println("Indicar potencial: Negativo - Neutral - Positivo ");
+            String entry = scanner.next();
+            Potencial potencial = Enum.valueOf(Potencial.class, entry);
+            op.setPotencial(potencial);
+            op.setComentario(Consola.validarComentario("Comentarios Adicionales: "));
+            op.ultimoContacto();
+            listaOportunidades.add(op);
+            System.out.println("");
+            System.out.println(" CREAR FICHA CLIENTE = 1 \n VER OPO ingresada = 2 \n SALIR = 3");
+            int opcion = scanner.nextInt();
+            switch (opcion) {
+                case 1:
+                    crearCliente();
+                    isRun = false;
+                    break;
+                case 2:
+                    System.out.println(getOportunidades());
+                    isRun = false;
+                    break;
+                case 3:
+                    isRun = false;
+            }
+        }
     }
-    public void crearCliente(){
-        Scanner scanner = new Scanner(System.in);
-        Cliente unCliente = new Cliente();
-        System.out.println("Empresa: ");
-        String empresa = scanner.next();
-        unCliente.setEmpresa(empresa);
-        System.out.println("Contacto: ");
-        String contacto = scanner.next();
-        unCliente.setContacto(contacto);
-        System.out.println("Cargo: ");
-        String cargo = scanner.next();
-        unCliente.setCargo(cargo);
-        unCliente.setPhoneNumber(Consola.validarTel("Número Telefónico (10 dígitos): "));
-        unCliente.setEmail(Consola.validarEmail("Email (ejemplo@ejemplo.com): "));
 
-        listaClientes.add(unCliente);
-        System.out.println(getListaClientes());
+    public void crearCliente(){
+            Scanner scanner = new Scanner(System.in);
+            Cliente unCliente = new Cliente();
+            System.out.println("Empresa: ");
+            String empresa = scanner.next();
+            unCliente.setEmpresa(empresa);
+            System.out.println("Contacto: ");
+            String contacto = scanner.next();
+            unCliente.setContacto(contacto);
+            System.out.println("Cargo: ");
+            String cargo = scanner.next();
+            unCliente.setCargo(cargo);
+            unCliente.setPhoneNumber(Consola.validarTel("Número Telefónico (10 dígitos): "));
+            unCliente.setEmail(Consola.validarEmail("Email (ejemplo@ejemplo.com): "));
+            listaClientes.add(unCliente);
+
     }
 
     @Override

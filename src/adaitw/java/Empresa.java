@@ -1,5 +1,5 @@
 package adaitw.java;
 
 public abstract class Empresa {
-    Administrador administrador = new Administrador();
+    Administrador administrador;
 }

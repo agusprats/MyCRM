@@ -9,6 +9,8 @@ public class Oportunidad {
     private String empresa;
     private String contacto;
     private String cargo;
+    private String email;
+    private String phoneNumber;
     private LocalDate contactDate;
     private Boolean newCall;
     private Potencial potencial;
@@ -17,15 +19,7 @@ public class Oportunidad {
     private String comentario;
 
     public Oportunidad(){
-        this.codigoOp = codigoOp;
-        this.empresa = empresa;
-        this.contacto = contacto;
-        this.cargo = cargo;
-        this.contactDate = contactDate;
-        this.newCall = newCall;
-        this.precioReferencia = precioReferencia;
-        this.potencial= potencial;
-        this.comentario = comentario;
+
     }
 
 
@@ -59,6 +53,22 @@ public class Oportunidad {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setNewCall(Boolean newCall) {
@@ -97,10 +107,12 @@ public class Oportunidad {
         Period diff = Period.between(start_date, today_date);
 
         //Alerta para futuros llamados si pasa un mes:
-        if(diff.getMonths() >= 1 ){
-            return "Transcurrió un mes !!!: \n"+diff.getYears()+" Año - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
-        }else{
-            return "Tiempo desde primer contacto: \n"+diff.getYears()+" Año/s - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
+        if (diff.getMonths() >= 1 || diff.getYears() < 1) {
+            return "Transcurrió más de un MES !!!: \n" + diff.getYears() + " Año - " + diff.getMonths() + " Mes/es - " + diff.getDays() + " Dia/s ";
+        } else if (diff.getYears() > 1) {
+            return "Transcurrió más de un AÑO: \n" + diff.getYears() + " Año/s - " + diff.getMonths() + " Mes/es - " + diff.getDays() + " Dia/s ";
+        } else {
+            return "Transcurrió: \n" + diff.getYears() + " Año/s - " + diff.getMonths() + " Mes/es - " + diff.getDays() + " Dia/s ";
         }
     }
 
@@ -141,7 +153,7 @@ public class Oportunidad {
                 ", Precio Referencia: " + getPrecioReferencia() +
                 ", ¿Acepta Seguimiento? " + getnewCall() +
                 ", Potencial: " + potencial.getSigno()+
-                ", Comentarios Adicionales: " + comentario +
+                ", Comentarios Adicionales: " + getComentario() +
                 ", Alerta Seguimiento: " + ultimoContacto() +
                 ", items: " + items +
                 '}';

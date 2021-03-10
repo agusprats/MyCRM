@@ -8,11 +8,6 @@ public class Cliente extends Oportunidad {
     private String phoneNumber;
 
     public Cliente() {
-        this.empresa = empresa;
-        this.contacto = contacto;
-        this.cargo = cargo;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
     }
 
     @Override
