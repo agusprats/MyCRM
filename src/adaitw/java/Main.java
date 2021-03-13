@@ -86,7 +86,7 @@ public class Main {
                     ingresoAdministrador();
                     break;
                 case 2:
-                    Consola.verificarVendedor("Ingrese Clave de Acceso: ");
+                    Consola.validarId("INGRESAR ID VENDEDOR: ");
                     ingresoVendedor();
                     break;
                 case 3:
