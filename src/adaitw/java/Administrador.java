@@ -4,16 +4,16 @@ import java.util.*;
 
 public class Administrador implements ControlCentral {
     List<Vendedor> vendedores;
-    List<Cliente> listaClientes;
+    List<Cliente> clientes;
 
 
     public Administrador() {
         this.vendedores = new ArrayList<>();
-        this.listaClientes = new ArrayList<>();
+        this.clientes = new ArrayList<>();
     }
 
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
+    public List<Cliente> getClientes() {
+        return clientes;
     }
 
 
@@ -45,8 +45,8 @@ public class Administrador implements ControlCentral {
         unCliente.setCargo(cargo);
         unCliente.setPhoneNumber(Consola.validarTel("Número Telefónico (10 dígitos): "));
         unCliente.setEmail(Consola.validarEmail("Email (ejemplo@ejemplo.com): "));
-        listaClientes.add(unCliente);
-        System.out.println(getListaClientes());
+        clientes.add(unCliente);
+        System.out.println(getClientes());
     }
 
 
@@ -54,7 +54,7 @@ public class Administrador implements ControlCentral {
     public String toString() {
         return "Administrador{" +
                 "vendedores=" + vendedores +
-                ", listaClientes=" + listaClientes +
+                ", listaClientes=" + clientes +
                 '}';
     }
 }

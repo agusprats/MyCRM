@@ -12,15 +12,29 @@ public class Oportunidad {
     private String email;
     private String phoneNumber;
     private LocalDate contactDate;
-    private Boolean newCall;
+    private boolean newCall;
     private Potencial potencial;
     private List<Item> items;// productos y servicios ofrecidos
-    private Boolean precioReferencia;
+    private boolean precioReferencia;
     private String comentario;
 
     public Oportunidad(){
-
     }
+
+    public Oportunidad(String codigoOp, String empresa, String contacto, String cargo, LocalDate contactDate, boolean newCall, boolean precioReferencia, String comentario) {
+        this.codigoOp = codigoOp;
+        this.empresa = empresa;
+        this.contacto = contacto;
+        this.cargo = cargo;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.contactDate = contactDate;
+        this.newCall = newCall;
+        this.potencial = potencial;
+        this.precioReferencia = precioReferencia;
+        this.comentario = comentario;
+    }
+
 
 
     public String getCodigoOp() {
@@ -71,7 +85,7 @@ public class Oportunidad {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setNewCall(Boolean newCall) {
+    public void setNewCall(boolean newCall) {
         this.newCall = newCall;
     }
 
@@ -83,7 +97,7 @@ public class Oportunidad {
         }
     }
 
-    public void setPrecioReferencia(Boolean precioReferencia) {
+    public void setPrecioReferencia(boolean precioReferencia) {
         this.precioReferencia = precioReferencia;
     }
 
@@ -91,7 +105,7 @@ public class Oportunidad {
         if(precioReferencia){
             return "Se indicó precio";
         }else {
-            return "Sin precio";
+           return "Sin precio";
         }
     }
     public LocalDate getContactDate() {
@@ -106,7 +120,7 @@ public class Oportunidad {
         LocalDate today_date = LocalDate.now();
         Period diff = Period.between(start_date, today_date);
 
-        //Alerta para futuros llamados si pasa un mes:
+        //Alerta para futuros llamados si pasa un mes o un año:
         if (diff.getMonths() >= 1 || diff.getYears() < 1) {
             return "Transcurrió más de un MES !!!: \n" + diff.getYears() + " Año - " + diff.getMonths() + " Mes/es - " + diff.getDays() + " Dia/s ";
         } else if (diff.getYears() > 1) {
@@ -134,11 +148,6 @@ public class Oportunidad {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
-    }
-
-    public String OportunitySheet() {
-        return "Nº OPO: " + codigoOp +", Empresa: '" + empresa +
-                '\'' +"\n ¿Seguimiento? : " + newCall + "\n - Primer Contacto: " + contactDate+ "\n - Potencial: "+ getPotencial();
     }
 
 
@@ -173,15 +182,8 @@ public class Oportunidad {
                 this.potencial = Potencial.neutral;
         }
         }
- */
- /*
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Escribe el potencial: Negativo, Neutral, Positivo ");
-        String entry=sc.next();
-        Potencial pot = Enum.valueOf(Potencial.class, entry);
-        System.out.println("Potencial: "+ pot.getSigno());*/
 
-/*
+
     public void setPrecioReferencia(String precioReferencia) {
         if (precioReferencia.equalsIgnoreCase("si")) {
             this.precioReferencia = true;

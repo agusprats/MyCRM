@@ -2,20 +2,30 @@ package adaitw.java;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Vendedor implements ControlCentral {
     private String id;
     private String nombre;
-    List <Cliente> listaClientes;
-    List<Oportunidad> listaOportunidades;
+    private Vendedor gerente;
+    private boolean manager;
+    List <Cliente> clientes;
+    List<Oportunidad> oportunidades;
 
     public Vendedor() {
+        this.clientes = new ArrayList<>();
+        this.oportunidades = new ArrayList<>();
+    }
+
+    public Vendedor(String id, String nombre, Vendedor gerente, boolean esManager){
         this.id = id;
         this.nombre = nombre;
-        this.listaClientes = new ArrayList<>();
-        this.listaOportunidades = new ArrayList<>();
+        this.gerente = gerente;
+        this.manager= esManager;
+        this.clientes = new ArrayList<>();
+        this.oportunidades = new ArrayList<>();
     }
 
     public String getId() {
@@ -34,20 +44,31 @@ public class Vendedor implements ControlCentral {
         this.nombre = nombre;
     }
 
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
+    public Vendedor getGerente() {
+        return gerente;
     }
 
-    public List<Oportunidad> getOportunidades() {
-        return listaOportunidades;
+    public void setGerente(Vendedor gerente) {
+        this.gerente = gerente;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void getOportunidades() {
+        Iterator<Oportunidad> oportunidadIterator = oportunidades.iterator();
+        while (oportunidadIterator.hasNext()) {
+            System.out.println(oportunidadIterator.next());
+        }
     }
 
     public void agregarOportunidad(Oportunidad oportunidad) {
-        this.listaOportunidades.add(oportunidad);
+        this.oportunidades.add(oportunidad);
     }
 
     public void eliminarOportunidad(Oportunidad oportunidad) {
-        this.listaOportunidades.remove(oportunidad);
+        this.oportunidades.remove(oportunidad);
     }
 
 
@@ -66,20 +87,19 @@ public class Vendedor implements ControlCentral {
             System.out.println("Cargo: ");
             String cargo = scanner.next();
             op.setCargo(cargo);
-            System.out.println("Primer contacto (YYYY-MM-DD):");
-            LocalDate contactDate = LocalDate.parse(scanner.next());
-            op.setContactDate(contactDate);
+            op.setContactDate(LocalDate.parse(Consola.validarFecha("Primer llamado: (YYYY-MM-DD):")));
             op.setPrecioReferencia(Boolean.parseBoolean(Consola.validarPrecioReferencia("¿Se indicó precio de referencia? (true/false): ")));
             op.setNewCall(Boolean.parseBoolean(Consola.validarNewCall("¿Acepta Seguimiento? (true/false): ")));
-            System.out.println("Indicar potencial: Negativo - Neutral - Positivo ");
+            System.out.println("Potencial: Negativo - Neutral - Positivo ");
             String entry = scanner.next();
             Potencial potencial = Enum.valueOf(Potencial.class, entry);
             op.setPotencial(potencial);
             op.setComentario(Consola.validarComentario("Comentarios Adicionales: "));
             op.ultimoContacto();
-            listaOportunidades.add(op);
+            oportunidades.add(op);
             System.out.println("");
-            System.out.println(" CREAR FICHA CLIENTE = 1 \n VER OPO ingresada = 2 \n SALIR = 3");
+            System.out.println("********************************");
+            System.out.println(" ==> CREAR FICHA CLIENTE = 1 \n ==> VER OPORTUNIDAD CREADA = 2 \n ==> ASIGNAR A GERENTE = 3 \n ==> SALIR = 4");
             int opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
@@ -87,10 +107,12 @@ public class Vendedor implements ControlCentral {
                     isRun = false;
                     break;
                 case 2:
-                    System.out.println(getOportunidades());
+                    getOportunidades();
+                    //System.out.println(getOportunidades());
                     isRun = false;
                     break;
-                case 3:
+                //case 3: Asignar Oportunidad a Gerente
+                case 4:
                     isRun = false;
             }
         }
@@ -110,7 +132,7 @@ public class Vendedor implements ControlCentral {
             unCliente.setCargo(cargo);
             unCliente.setPhoneNumber(Consola.validarTel("Número Telefónico (10 dígitos): "));
             unCliente.setEmail(Consola.validarEmail("Email (ejemplo@ejemplo.com): "));
-            listaClientes.add(unCliente);
+            clientes.add(unCliente);
 
     }
 
@@ -123,26 +145,21 @@ public class Vendedor implements ControlCentral {
     }
 
 
+
 }
 
 
 
-
-
-
-
-
-
-
-
-
+ /*
+            System.out.println("Primer llamado: (YYYY-MM-DD):");
+            LocalDate contactDate = LocalDate.parse(scanner.next());
+            op.setContactDate(contactDate);
+            */
 
     /*
-
         //List<Prospecto> prospectos = op.getProspecto();
         //Prospecto unProspecto = prospectos.get(0);
         //Prospecto p = (Prospecto) unProspecto; */
-
    /*
 
    public List<String> prospectoToString() {

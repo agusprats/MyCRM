@@ -30,7 +30,7 @@ public class Main {
                     System.out.println(administrador.getVendedores());
                     break;
                 case 4:
-                    System.out.println(administrador.getListaClientes());
+                    System.out.println(administrador.getClientes());
                     break;
                 case 5:
                    cont= false;
@@ -50,8 +50,7 @@ public class Main {
             System.out.println("2.CREAR CLIENTE");
             System.out.println("3.LISTAR OPORTUNIDADES");
             System.out.println("4.LISTAR CLIENTES");
-            System.out.println("5.VER FICHA");
-            System.out.println("6.VOLVER MENU PRINCIPAL");
+            System.out.println("5.VOLVER MENU PRINCIPAL");
             System.out.print("Ingrese la opción deseada: ");
             int choice3 = sc.nextInt();
             switch (choice3) {
@@ -62,15 +61,12 @@ public class Main {
                     v.crearCliente();
                     break;
                 case 3:
-                    System.out.println(v.getOportunidades());
+                    v.getOportunidades();
                     break;
                 case 4:
-                    System.out.println(v.getListaClientes());
+                    System.out.println(v.getClientes());
                     break;
                 case 5:
-                    System.out.println(oportunidad.OportunitySheet());
-                    break;
-                case 6:
                    isRun = false;
             }
         }
@@ -83,13 +79,14 @@ public class Main {
             System.out.println("1.INGRESO ADMINISTRADOR");
             System.out.println("2.INGRESO VENDEDOR");
             System.out.println("3.EXIT");
-            System.out.println("------------------------");
+            System.out.println("----------------------------");
             int choice1 = Consola.validateInt("Seleccionar (número): ", 1, 3);
             switch(choice1) {
                 case 1:
                     ingresoAdministrador();
                     break;
                 case 2:
+                    Consola.verificarVendedor("Ingrese Clave de Acceso: ");
                     ingresoVendedor();
                     break;
                 case 3:
@@ -101,6 +98,8 @@ public class Main {
 
     }
 }
+
+
 /*CRM para la gestión de ventas en una empresa
 Se requiere un sistema que permita registrar una oportunidad de negocio.
 
@@ -124,10 +123,6 @@ Sales funnel / embudo de ventas:
 
 
 /*
-
-
-
-
 
 Vendedor v = new Vendedor();
 Oportunidad oportunidad = new Oportunidad();
